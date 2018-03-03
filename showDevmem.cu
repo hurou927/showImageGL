@@ -12,8 +12,8 @@
 // g++ -o main main.cpp -O2 -lGL -lglfw
 
 #include <iostream>
-#include "gl_device_cuda.cuh"
-#include "my_pgm.h"
+#include "header/gl_device_cuda.cuh"
+#include "header/my_pgm.h"
 // #define RGBALIGNMENT 3
 
 template < typename T >
@@ -28,7 +28,7 @@ int main(int argc, char**argv){
     using namespace std;
     size_t Max,width,height,SamplePerPixel;
 	//unsigned char * img = ReadPNM((char*)"lena_gray.pgm",NULL, &Max,&width,&height,&SamplePerPixel);
-    unsigned char * img = ReadPNM((char*)"lena_color.ppm",NULL, &Max,&width,&height,&SamplePerPixel);
+    unsigned char * img = ReadPNM("image/lena_color.ppm",NULL, &Max,&width,&height,&SamplePerPixel);
 
     colorType type = (SamplePerPixel == 1) ? GRAY : RGB;
 

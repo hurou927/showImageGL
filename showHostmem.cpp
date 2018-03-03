@@ -3,14 +3,14 @@
 // g++ -o main main.cpp -O2 -lGL -lglfw
 
 #include <iostream>
-#include "gl_host.hpp"
-#include "my_pgm.h"
+#include "header/gl_host.hpp"
+#include "header/my_pgm.h"
 
 int main(int argc, char**argv){
     
     size_t Max,width,height,SamplePerPixel;
 	//unsigned char * img = ReadPNM((char*)"lena_gray.pgm",NULL, &Max,&width,&height,&SamplePerPixel);
-    unsigned char * img = ReadPNM((char*)"lena_color.ppm",NULL, &Max,&width,&height,&SamplePerPixel);
+    unsigned char * img = ReadPNM("image/lena_color.ppm",NULL, &Max,&width,&height,&SamplePerPixel);
 
     colorType type = (SamplePerPixel == 1) ? GRAY : RGB;
 
