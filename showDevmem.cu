@@ -34,7 +34,7 @@ int main(int argc, char**argv){
 
     size_t windowWidth  = 512;
     size_t windowHeight = 512;
-    glImageDevice mygl(width,height,type, windowWidth, windowHeight,"test window");
+    glImageDevice glh(width,height,type, windowWidth, windowHeight,"test window");
 
     unsigned char *cuda_globalMemory;
     
@@ -50,9 +50,9 @@ int main(int argc, char**argv){
     
     if(SamplePerPixel==1){       
        
-        mygl.setGlobalMemoryPtr((void *)cuda_globalMemory);
+        glh.setGlobalMemoryPtr((void *)cuda_globalMemory);
         cudaMemcpy(cuda_globalMemory,img,imageSize*sizeof(unsigned char),cudaMemcpyHostToDevice);
-        while (!mygl.isClosed()) {
+        while (!glh.isClosed()) {
             //++++++++ Host computation 
             // for(int i=0;i<width*height*SamplePerPixel;i++) img[i]=img[i]-1;
             // cudaMemcpy(cuda_globalMemory,img,imageSize*sizeof(unsigned char),cudaMemcpyHostToDevice);
@@ -61,7 +61,7 @@ int main(int argc, char**argv){
             minus1 <unsigned char> <<< (textureImageSize+1023)/1024 , 1024 >>> ( cuda_globalMemory , textureImageSize );
             cudaDeviceSynchronize();
             
-            mygl.show();
+            glh.show();
         }
 
 
@@ -69,24 +69,24 @@ int main(int argc, char**argv){
        
         unsigned char *cuda_globalMemory_RGBA;
         cudaMalloc((void **)&cuda_globalMemory_RGBA, textureImageSize*sizeof(unsigned char));
-        mygl.setGlobalMemoryPtr((void *)cuda_globalMemory_RGBA);
+        glh.setGlobalMemoryPtr((void *)cuda_globalMemory_RGBA);
 
         cudaMemcpy(cuda_globalMemory,img,imageSize,cudaMemcpyHostToDevice);
-        mygl.RGB2RGBA(cuda_globalMemory_RGBA,cuda_globalMemory); //CUDA does not support RGBRGBRGB... (3 components/pixel)
+        glh.RGB2RGBA(cuda_globalMemory_RGBA,cuda_globalMemory); //CUDA does not support RGBRGBRGB... (3 components/pixel)
 
-        while (!mygl.isClosed()) {
+        while (!glh.isClosed()) {
 
             //++++++++ Host computation 
             //  for(int i=0;i<width*height*SamplePerPixel;i++) img[i]=img[i]-1;
             //  cudaMemcpy(cuda_globalMemory,img,imageSize,cudaMemcpyHostToDevice);
-            //  //mygl.RGB2RGBA(cuda_globalMemory_RGBA,cuda_globalMemory); //CUDA does not support RGBRGBRGB... (3 components/pixel)
+            //  //glh.RGB2RGBA(cuda_globalMemory_RGBA,cuda_globalMemory); //CUDA does not support RGBRGBRGB... (3 components/pixel)
             //  glImageDevice::RGB2RGBA(cuda_globalMemory_RGBA,cuda_globalMemory,width,height); //CUDA does not support RGBRGBRGB... (3 components/pixel)
 
             //++++++++ Device computation
             minus1 <unsigned char> <<< (textureImageSize+1023)/1024 , 1024 >>> ( cuda_globalMemory_RGBA , textureImageSize ); // ignore Alpha values!
             cudaDeviceSynchronize();
 
-            mygl.show();
+            glh.show();
         }
         cudaFree(cuda_globalMemory_RGBA);
 

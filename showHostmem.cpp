@@ -16,12 +16,12 @@ int main(int argc, char**argv){
 
     size_t windowWidth = 512;
     size_t windowHeight = 512;
-    glImageHost mygl(width,height,type, windowWidth, windowHeight,"test window");
+    glImageHost glh(width,height,type, windowWidth, windowHeight,"test window");
 
     std::cout << "End : ESCAPE key" << std::endl;
-    while (!mygl.isClosed()) {
+    while (!glh.isClosed()) {
         for(size_t i=0;i<width*height*SamplePerPixel;i++) img[i]=img[i]-1;
-        mygl.show(img);
+        glh.show(img);
     }
 
     free(img);
