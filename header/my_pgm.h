@@ -12,10 +12,6 @@ printf("Max,%d,Width,%d,Length,%d,SamplePerPixel,%d\n",Max,Width,Length,SamplePe
 #include <stdlib.h>
 
 
-
-//This file supports only PGM format P2 and P5;
-//"ReadPGM" calls "ReadPGM_P2" or "ReadPGM_P5";
-
 unsigned char *ReadPNM   (const char *filename, char *Format, size_t *Max , size_t *Width, size_t *Length,size_t *SamplePerPixel);
 void WritePNM (const char *filename, unsigned char *image, size_t Max ,size_t Width,size_t Length,size_t SamplePerPixel);
 
