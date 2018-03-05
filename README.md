@@ -36,7 +36,7 @@ Require : glfw3 , CUDA
 
 * linux ``` nvcc showHostmem.cpp -lglfw3 -lGL ```
 
-* windows ``` nvcc showHostmem.cpp -lglfw3 -lopen gl32```
+* windows ``` nvcc showHostmem.cpp -lglfw3 -lopengl32```
 
 # License
 This software is released under the MIT License, see ```LICENSE.txt```.
