@@ -40,3 +40,9 @@ Require : glfw3 , CUDA
 
 # License
 This software is released under the MIT License, see ```LICENSE.txt```.
+
+# Tips
+
+## windows
+
+Download GLFW3 : http://www.glfw.org/download.html
