@@ -14,7 +14,7 @@ Require : glfw3 , CUDA
 ## main
 
 ```cpp
-    colorType type = GRAY; // support GRAY, RGB or RGBA
+    colorType type = RGB; // support GRAY, RGB or RGBA
     glImageDevice glh(imageWidth,imageHeight,type, windowWidth, windowHeight,windowName);
     // ::::::::::::::
     // cudaMalloc( and cudaMemcpy )
