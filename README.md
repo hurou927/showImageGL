@@ -10,17 +10,17 @@ Require : glfw3 , CUDA
 ```cpp 
     glImageDevice glh(imageWidth,imageHeight,type, windowWidth, windowHeight,windowName);
     // ::::::::::::::
-    // cudaMalloc and cudaMemcpy
+    // cudaMalloc( and cudaMemcpy )
     // ::::::::::::::
-    // Set device memory ptr. for showing image
-    glh.setGlobalMemoryPtr((void *)global_memory_ptr_RGBA);
+    // Set device memory ptr. of showed image
+    glh.setGlobalMemoryPtr((void *)gmem_RGBA);
     while (!glh.isClosed()) {
         // ::::::::::::::
         // GPU computing
         // ::::::::::::::
         // RGB to RGBA (CUDA does not support 3 components/pixel)
         // If you show RGB image, you must call RGB2RGBA func. or write CUDA code for RGBA image
-        glImageDevice::RGB2RGBA(cuda_globalMemory_RGBA,global_memory_ptr_RGB, imageWidth, imageHeight); 
+        glImageDevice::RGB2RGBA(gmem_RGBA, gmem_RGB, imageWidth, imageHeight); 
         glh.show();
     }
 ```
