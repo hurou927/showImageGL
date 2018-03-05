@@ -32,7 +32,7 @@ Require : glfw3 , CUDA
     }
 ```
 
-# build
+# Build
 
 * linux ``` nvcc showHostmem.cpp -lglfw3 -lGL ```
 
