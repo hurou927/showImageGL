@@ -1,6 +1,6 @@
 # showImageGL
 
-Show image in NVIDIA-GPU device memory (global memory).
+Show image(__ONLY 8bits/component__) in NVIDIA-GPU device memory (global memory).
 
 Require : glfw3 , CUDA
 
