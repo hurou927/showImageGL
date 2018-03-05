@@ -7,6 +7,12 @@ Require : glfw3 , CUDA
 
 # Code
 
+## include 
+
+``` #include "header/gl_device_cuda.cuh" ```
+
+## main
+
 ```cpp
     colorType type = GRAY; // support GRAY, RGB or RGBA
     glImageDevice glh(imageWidth,imageHeight,type, windowWidth, windowHeight,windowName);
